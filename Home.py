@@ -8,7 +8,5 @@ text = '<p style=" color:#7f4718; font-size: 30px;"<b>Oreo Cookies</b></p>'
 st.markdown(text, unsafe_allow_html=True)
 
 st.markdown("by **Meredith Wang**")
-
-
-
-st.write('')
+image = Image.open('img/spooky_cropped.png')
+st.image(image,width = 1200)
