@@ -6,7 +6,7 @@ import plotly.figure_factory as ff
 from PIL import Image
 # Config
 st.set_page_config(page_title='Home',
-                   page_icon='😀',
+                   page_icon='🎃',
                    layout="wide")
 
 df = pd.read_csv('data/oreo.csv')
@@ -22,7 +22,7 @@ df['cookie'] = df.type.map({'golden oreo sandwich cookies': 'Golden', 'double st
                             'Oreo Mini': 'Mini',
                             'Oreo Mini Pokemon': 'Mini',
                             'oreo chocolate sandwich cookies': 'Chocolate'})
-columns = st.columns((3,0.5,3))
+columns = st.columns((3,0.5))
 with columns[0]:
     price = pd.DataFrame(df.groupby('cookie').price.mean().reset_index())
     price = price.sort_values('price')
@@ -42,23 +42,27 @@ with columns[1]:
     image = Image.open('img/spider.png')
     st.image(image,width = 200)
 
-
+#============================================================================================================#
+#============================================================================================================#
+# MIDDLE IMAGE
 image = Image.open('img/spooky_cropped.png')
 st.image(image,width = 1600)
 
-fig = px.scatter(df, x='launch_year',y='cookie', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#88D1F6', 'Mint': '#88D1F6',
-                                                                                        'Cakesters': '#64C3f3', 'Mega Stuf': '#49b8f1', 'Gluten Free': '#0E84bf',
-                                                                                        'Golden': '#7FCDF5', 'Double Stuf': '#B6E3F9', 'Birthday Cake': '#49b8f1',
-                                                                                        'Halloween': '#F29466', 'Brownie': '#36b1ef'}, labels = {'launch_year': 'Year of Initial Launch', 'cookie': 'Oreo Type'})
-fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
-                   font_size = 16, legend=dict(
-         orientation="h", y=-0.5, font = dict(size = 12)))
-fig.update_traces(marker=dict(size=12,
-                               line=dict(width=2)))
-fig.add_layout_image(dict(
-    source="https://i.imgur.com/RejyIpx.jpg",
-    x=1920,
-    y=100,
-sizex=100,
-sizey=100))
-st.plotly_chart(fig, use_container_width=True)
+#============================================================================================================#
+#============================================================================================================#
+# BOTTOM
+columns = st.columns((1,2))
+with columns[0]:
+    fig = px.scatter(df, x='cookie', y='rating', size = 'rating', size_max = 30)
+    st.plotly_chart(fig, use_container_width=True)
+with columns[1]:
+    fig = px.scatter(df, x='launch_year',y='cookie', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#88D1F6', 'Mint': '#88D1F6',
+                                                                                            'Cakesters': '#64C3f3', 'Mega Stuf': '#49b8f1', 'Gluten Free': '#0E84bf',
+                                                                                            'Golden': '#7FCDF5', 'Double Stuf': '#B6E3F9', 'Birthday Cake': '#49b8f1',
+                                                                                            'Halloween': '#F29466', 'Brownie': '#36b1ef'}, labels = {'launch_year': 'Year of Initial Launch', 'cookie': 'Oreo Type'})
+    fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
+                       font_size = 16, legend=dict(
+             orientation="h", y=-0.5, font = dict(size = 12)))
+    fig.update_traces(marker=dict(size=12,
+                                   line=dict(width=2)))
+    st.plotly_chart(fig, use_container_width=True)
