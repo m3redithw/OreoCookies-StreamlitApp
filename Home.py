@@ -35,7 +35,7 @@ with columns[0]:
     fig.update_xaxes(categoryorder='array', categoryarray= ['Chocolate', 'Mini', 'Mint', 'Cakesters', 'Mega Stuf', 'Gluten Free', 'Golden', 'Double Stuf', 'Birthday Cake', 'Halloween', 'Brownie'])
     fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
                       font_size = 16, yaxis_range=[3.5,6], legend=dict(
-            orientation="h", y=-0.5, font = dict(size = 12)))
+            orientation="h", y=-0.8, font = dict(size = 12)))
     st.plotly_chart(fig, use_container_width=True)
 
 with columns[1]:
