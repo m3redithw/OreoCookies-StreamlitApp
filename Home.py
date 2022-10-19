@@ -22,7 +22,7 @@ df['cookie'] = df.type.map({'golden oreo sandwich cookies': 'Golden', 'double st
                             'Oreo Mini': 'Mini',
                             'Oreo Mini Pokemon': 'Mini',
                             'oreo chocolate sandwich cookies': 'Chocolate'})
-columns = st.columns((1,1))
+columns = st.columns((3,0.5,3))
 with columns[0]:
     price = pd.DataFrame(df.groupby('cookie').price.mean().reset_index())
     price = price.sort_values('price')
@@ -37,6 +37,10 @@ with columns[0]:
                       font_size = 16, yaxis_range=[3.5,6], legend=dict(
             orientation="h", y=-0.5, font = dict(size = 12)))
     st.plotly_chart(fig, use_container_width=True)
+
+with columns[1]:
+    image = Image.open('img/spider.png')
+    st.image(image,width = 200)
 
 
 image = Image.open('img/spooky_cropped.png')
@@ -53,7 +57,8 @@ fig.update_traces(marker=dict(size=12,
                                line=dict(width=2)))
 fig.add_layout_image(dict(
     source="https://i.imgur.com/RejyIpx.jpg",
-    x=1912,
-    y='Chocolate'))
-
+    x=1920,
+    y=100,
+sizex=100,
+sizey=100))
 st.plotly_chart(fig, use_container_width=True)
