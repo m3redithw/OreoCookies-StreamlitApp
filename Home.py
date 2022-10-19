@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import plotly.figure_factory as ff
 from PIL import Image
 # Config
@@ -20,7 +21,6 @@ df['cookie'] = df.type.map({'golden oreo sandwich cookies': 'Golden', 'double st
                             'Birthday Cake Chocolate Sandwich Cookies': 'Birthday Cake',
                             'Oreo Mini': 'Mini',
                             'Oreo Mini Pokemon': 'Mini',
-                            'double stuf gluten free oreo sandwich cookies': 'Gluten Free',
                             'oreo chocolate sandwich cookies': 'Chocolate'})
 columns = st.columns((1,1))
 with columns[0]:
@@ -35,9 +35,25 @@ with columns[0]:
     fig.update_xaxes(categoryorder='array', categoryarray= ['Chocolate', 'Mini', 'Mint', 'Cakesters', 'Mega Stuf', 'Gluten Free', 'Golden', 'Double Stuf', 'Birthday Cake', 'Halloween', 'Brownie'])
     fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
                       font_size = 16, yaxis_range=[3.5,6], legend=dict(
-            orientation="h", y=-0.5, font = dict(size = 10)))
+            orientation="h", y=-0.5, font = dict(size = 12)))
     st.plotly_chart(fig, use_container_width=True)
 
 
 image = Image.open('img/spooky_cropped.png')
 st.image(image,width = 1600)
+
+fig = px.scatter(df, x='launch_year',y='cookie', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#88D1F6', 'Mint': '#88D1F6',
+                                                                                        'Cakesters': '#64C3f3', 'Mega Stuf': '#49b8f1', 'Gluten Free': '#0E84bf',
+                                                                                        'Golden': '#7FCDF5', 'Double Stuf': '#B6E3F9', 'Birthday Cake': '#49b8f1',
+                                                                                        'Halloween': '#F29466', 'Brownie': '#36b1ef'}, labels = {'launch_year': 'Year of Initial Launch', 'cookie': 'Oreo Type'})
+fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
+                   font_size = 16, legend=dict(
+         orientation="h", y=-0.5, font = dict(size = 12)))
+fig.update_traces(marker=dict(size=12,
+                               line=dict(width=2)))
+fig.add_layout_image(dict(
+    source="https://i.imgur.com/RejyIpx.jpg",
+    x=1912,
+    y='Chocolate'))
+
+st.plotly_chart(fig, use_container_width=True)
