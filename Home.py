@@ -192,7 +192,23 @@ with columns[0]:
             source=halloween,
             xref="x",
             yref="y",
-            x=8.5,
+            x=8.525,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # BROOKIE
+    brookie = Image.open('img/brookie.png')
+    fig.add_layout_image(
+        dict(
+            source=brookie,
+            xref="x",
+            yref="y",
+            x=9.55,
             y=7.5,
             sizex=2,
             sizey=2,
