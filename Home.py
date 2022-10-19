@@ -38,8 +38,170 @@ with columns[0]:
                   annotation_font_color="#D2510F")
     fig.update_xaxes(categoryorder='array', categoryarray= ['Chocolate', 'Mini', 'Mint', 'Cakesters', 'Mega Stuf', 'Gluten Free', 'Golden', 'Double Stuf', 'Birthday Cake', 'Halloween', 'Brownie'])
     fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
-                      font_size = 16, yaxis_range=[3.5,6], legend=dict(
+                      font_size = 16, yaxis_range=[3.5,7.5], legend=dict(
             orientation="h", y=-0.8, font = dict(size = 12)))
+
+    # CHOCO
+    chocolate = Image.open('img/chocolate.jpg')
+    fig.add_layout_image(
+        dict(
+            source=chocolate,
+            xref="x",
+            yref="y",
+            x=-0.4,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # MINI
+    mini = Image.open('img/mini.png')
+    fig.add_layout_image(
+        dict(
+            source=mini,
+            xref="x",
+            yref="y",
+            x=0.6,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # MINT
+    mint = Image.open('img/mint.png')
+    fig.add_layout_image(
+        dict(
+            source=mint,
+            xref="x",
+            yref="y",
+            x=1.5,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # CAKESTERS
+    cakesters = Image.open('img/cakesters.jpg')
+    fig.add_layout_image(
+        dict(
+            source=cakesters,
+            xref="x",
+            yref="y",
+            x=2.6,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # MEGA
+    mega = Image.open('img/mega.jpg')
+    fig.add_layout_image(
+        dict(
+            source=mega,
+            xref="x",
+            yref="y",
+            x=3.6,
+            y=7.5,
+            sizex=1.8,
+            sizey=1.8,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # GLUTENFREE
+    gluten = Image.open('img/glutenfree.png')
+    fig.add_layout_image(
+        dict(
+            source=gluten,
+            xref="x",
+            yref="y",
+            x=4.55,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # GOLDEN
+    golden = Image.open('img/golden.jpg')
+    fig.add_layout_image(
+        dict(
+            source=golden,
+            xref="x",
+            yref="y",
+            x=5.55,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # DOUBLE STUF
+    double = Image.open('img/double.jpeg')
+    fig.add_layout_image(
+        dict(
+            source=double,
+            xref="x",
+            yref="y",
+            x=6.5,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # BIRTHDAY CAKE
+    birthday = Image.open('img/bdcake.png')
+    fig.add_layout_image(
+        dict(
+            source=birthday,
+            xref="x",
+            yref="y",
+            x=7.5,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+
+    # HALLOWEEN
+    halloween = Image.open('img/halloween.jpg')
+    fig.add_layout_image(
+        dict(
+            source=halloween,
+            xref="x",
+            yref="y",
+            x=8.5,
+            y=7.5,
+            sizex=2,
+            sizey=2,
+            opacity=0.9,
+            layer = 'below'
+        )
+    )
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=False)
     st.plotly_chart(fig, use_container_width=True)
 
 with columns[1]:
