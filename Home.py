@@ -26,13 +26,14 @@ columns = st.columns((1,1))
 with columns[0]:
     price = pd.DataFrame(df.groupby('cookie').price.mean().reset_index())
     price = price.sort_values('price')
-    fig = px.bar(price, x='cookie', y='price', color = 'cookie', color_discrete_map={'Chocolate': '#89afff', 'Mini': '#6294ff', 'Mint': '#4e87ff',
-                                                                                                                           'Cakesters': '#276dff', 'Mega Stuf': '#0052ff', 'Gluten Free': '#0045d7',
-                                                                                                                           'Golden': '#003fc4', 'Double Stuf': '#00329d', 'Birthday Cake': '#002c89',
-                                                                                                                           'Halloween': '#002675', 'Brownie': '#00194e'}, labels = {'price': 'Price', 'cookie': 'Oreo Type'})
-    fig.add_hline(y=4.66)
+    fig = px.bar(price, title = "Oreo Prices vs. Cookie Type",
+                 x='cookie', y='price', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#BFE6FA', 'Mint': '#A4DCF8',
+                                                                                 'Cakesters': '#92D4F6', 'Mega Stuf': '#88D1F6', 'Gluten Free': '#7FCDF5',
+                                                                                 'Golden': '#64C3f3', 'Double Stuf': '#49b8f1', 'Birthday Cake': '#36b1ef',
+                                                                                 'Halloween': '#F29466', 'Brownie': '#0E84bf'}, labels = {'price': 'Price', 'cookie': 'Oreo Type'})
+    fig.add_hline(y=4.66, line_dash="dash", line_color = '#ed5a14')
     fig.update_xaxes(categoryorder='array', categoryarray= ['Chocolate', 'Mini', 'Mint', 'Cakesters', 'Mega Stuf', 'Gluten Free', 'Golden', 'Double Stuf', 'Birthday Cake', 'Halloween', 'Brownie'])
-    fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#180909',
+    fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
                       font_size = 16, yaxis_range=[3.5,6], legend=dict(
             orientation="h", y=-0.5, font = dict(size = 10)))
     st.plotly_chart(fig, use_container_width=True)
