@@ -24,8 +24,8 @@ df['cookie'] = df.type.map({'golden oreo sandwich cookies': 'Golden', 'double st
                             'oreo chocolate sandwich cookies': 'Chocolate'})
 columns = st.columns((3,0.5))
 with columns[0]:
-    title = '<p style=" color:#231717; font-size: 35px;"><b>Oreo Prices vs. Cookie Type</b></p>'
-    st.markdown(title, unsafe_allow_html=True)
+    image = Image.open('img/title1.png')
+    st.image(image,width=500)
     price = pd.DataFrame(df.groupby('cookie').price.mean().reset_index())
     price = price.sort_values('price')
     fig = px.bar(price,
@@ -235,8 +235,8 @@ st.image(image,width = 1600)
 # BOTTOM
 columns = st.columns((1,2))
 with columns[0]:
-    title = '<p style=" color:#231717; font-size: 35px;"><b>Oreo Cookies Rating ☆☆☆☆☆</b></p>'
-    st.markdown(title, unsafe_allow_html=True)
+    image = Image.open('img/title2.png')
+    st.image(image,width = 800)
     rating = pd.DataFrame(df.groupby('cookie').rating.mean().reset_index())
     rating = rating.sort_values('rating')
     fig = px.bar(rating, x='rating', y='cookie', color = 'cookie', color_discrete_map={'Chocolate':'#E4F4FC','Brownie': '#BFE6FA',
@@ -251,10 +251,20 @@ with columns[0]:
                   annotation_position="top right", annotation_font_size=12,
                   annotation_font_color="#D2510F")
     fig.update_layout(paper_bgcolor="#fff4e4", plot_bgcolor='#fff4e4', font_color='#231717',
-                      font_size = 16, xaxis_range=[4,5], legend=dict(
-             orientation = 'h',y=-0.5, font = dict(size = 12)))
+                      font_size = 16, xaxis_range=[4,5], showlegend=False)
     st.plotly_chart(fig, use_container_width=True)
+
+    # IMAGE
+    image = Image.open('img/pumpkin.jpg')
+    st.image(image,use_column_width=True)
+
 with columns[1]:
+    image = Image.open('img/dash2.png')
+    st.image(image,use_column_width=True)
+
+    image = Image.open('img/title3.png')
+    st.image(image,width=500)
+
     fig = px.scatter(df, x='launch_year',y='cookie', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#88D1F6', 'Mint': '#88D1F6',
                                                                                             'Cakesters': '#64C3f3', 'Mega Stuf': '#49b8f1', 'Gluten Free': '#0E84bf',
                                                                                             'Golden': '#7FCDF5', 'Double Stuf': '#B6E3F9', 'Birthday Cake': '#49b8f1',
