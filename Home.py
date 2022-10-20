@@ -277,5 +277,6 @@ with columns[1]:
     st.plotly_chart(fig, use_container_width=True)
 
     # TITLE
-    image = Image.open('img/title3.png')
+    image = Image.open('img/title3web.png')
     st.image(image,width=1050)
+
