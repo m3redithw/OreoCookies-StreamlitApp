@@ -25,7 +25,7 @@ df['cookie'] = df.type.map({'golden oreo sandwich cookies': 'Golden', 'double st
 columns = st.columns((3,0.5))
 with columns[0]:
     image = Image.open('img/title1.png')
-    st.image(image,width=500)
+    st.image(image,width=450)
     price = pd.DataFrame(df.groupby('cookie').price.mean().reset_index())
     price = price.sort_values('price')
     fig = px.bar(price,
@@ -235,8 +235,7 @@ st.image(image,width = 1600)
 # BOTTOM
 columns = st.columns((1,2))
 with columns[0]:
-    image = Image.open('img/title2.png')
-    st.image(image,width = 800)
+
     rating = pd.DataFrame(df.groupby('cookie').rating.mean().reset_index())
     rating = rating.sort_values('rating')
     fig = px.bar(rating, x='rating', y='cookie', color = 'cookie', color_discrete_map={'Chocolate':'#E4F4FC','Brownie': '#BFE6FA',
@@ -254,6 +253,10 @@ with columns[0]:
                       font_size = 16, xaxis_range=[4,5], showlegend=False)
     st.plotly_chart(fig, use_container_width=True)
 
+    # TITLE
+    image = Image.open('img/title2.png')
+    st.image(image,width = 500)
+
     # IMAGE
     image = Image.open('img/pumpkin.jpg')
     st.image(image,use_column_width=True)
@@ -261,9 +264,6 @@ with columns[0]:
 with columns[1]:
     image = Image.open('img/dash2.png')
     st.image(image,use_column_width=True)
-
-    image = Image.open('img/title3.png')
-    st.image(image,width=500)
 
     fig = px.scatter(df, x='launch_year',y='cookie', color = 'cookie', color_discrete_map={'Chocolate': '#E4F4FC', 'Mini': '#88D1F6', 'Mint': '#88D1F6',
                                                                                             'Cakesters': '#64C3f3', 'Mega Stuf': '#49b8f1', 'Gluten Free': '#0E84bf',
@@ -275,3 +275,7 @@ with columns[1]:
     fig.update_traces(marker=dict(size=12,
                                    line=dict(width=2)))
     st.plotly_chart(fig, use_container_width=True)
+
+    # TITLE
+    image = Image.open('img/title3.png')
+    st.image(image,width=1050)
