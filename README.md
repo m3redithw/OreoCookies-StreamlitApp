@@ -4,7 +4,7 @@ by **Meredith Wang**
 October 2022
 
 # Description
-
+With Halloween season approaching, I've been seeing a lot of products related to this holiday arriving at grocery stores. Oreo cookies Halloween limited edition being one of the examples.  As someone who likes Oreo and has a cat nam
 # Data Overview
 
 
